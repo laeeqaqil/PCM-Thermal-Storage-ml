@@ -1,0 +1,28 @@
+# Data-Driven Performance Prediction for Dual-Bank PCM Thermal Energy Storage
+
+## Overview
+
+This repository contains the machine-learning and data-analysis workflow for a
+dual-bank lauric acid PCM latent heat thermal energy storage (LHTES) system
+integrated with a solar thermal collector (0.726 m² aperture, 3 kg PCM).
+
+The core of this work is a **Random Forest** model that predicts the instantaneous thermal efficiency of the storage system based on environmental and operational conditions. 
+
+A key finding of this research is that **PCM operational status** (charging, discharging, fully liquid, fully solid) is the second most important predictive feature, proving that state-aware control algorithms significantly outperform temperature-only models.
+
+## Dataset & Features
+- **Dataset:** 288 hourly records (24 experimental runs).
+- **Validation Split:** Run-level 70:30 split (ensuring the model is tested on unseen experimental runs).
+- **Features (14 columns):** Solar irradiance, ambient temperature, relative humidity, collector/chamber outlet temperatures, crop type, and one-hot encoded PCM operational states.
+
+## Model Performance
+- **Architecture:** Random Forest Regressor (100 trees, max depth 12, min samples leaf 5).
+- **Validation R²:** 0.927 (Training R²: 0.973).
+- **Mean Absolute Error (MAE):** 4.2%.
+- **Top 3 Features:** Solar irradiance (0.312), PCM operational status (0.187), Collector outlet temperature (0.164).
+
+## How to run
+
+```bash
+pip install -r requirements.txt
+jupyter notebook notebooks/01_RF_model_rebuild.ipynb
