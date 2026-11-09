@@ -17,4 +17,8 @@ Two models are developed:
 The work supports a published Indian patent (No. 202621015051 A) on a dual-zone
 PCM thermal storage system with predictive control.
 
-## Repository structure
+## How to run
+
+```bash
+pip install -r requirements.txt
+jupyter notebook notebooks/01_RF_model_rebuild.ipynb
